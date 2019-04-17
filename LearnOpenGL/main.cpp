@@ -19,52 +19,52 @@ void processInput(GLFWwindow * window);
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
-float fFac = 0.2;
+float fFac = 0.2f;
 
 int main()
 {
 	float vertices[] = {
-		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-		0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-		0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+		-0.5f, -0.5f, -0.5f,
+		0.5f, -0.5f, -0.5f,
+		0.5f,  0.5f, -0.5f,
+		0.5f,  0.5f, -0.5f,
+		-0.5f,  0.5f, -0.5f,
+		-0.5f, -0.5f, -0.5f,
 
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-		-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+		-0.5f, -0.5f,  0.5f,
+		0.5f, -0.5f,  0.5f,
+		0.5f,  0.5f,  0.5f,
+		0.5f,  0.5f,  0.5f,
+		-0.5f,  0.5f,  0.5f,
+		-0.5f, -0.5f,  0.5f,
 
-		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		-0.5f,  0.5f,  0.5f,
+		-0.5f,  0.5f, -0.5f,
+		-0.5f, -0.5f, -0.5f,
+		-0.5f, -0.5f, -0.5f,
+		-0.5f, -0.5f,  0.5f,
+		-0.5f,  0.5f,  0.5f,
 
-		0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+		0.5f,  0.5f,  0.5f,
+		0.5f,  0.5f, -0.5f,
+		0.5f, -0.5f, -0.5f,
+		0.5f, -0.5f, -0.5f,
+		0.5f, -0.5f,  0.5f,
+		0.5f,  0.5f,  0.5f,
 
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-		0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-		0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+		-0.5f, -0.5f, -0.5f,
+		0.5f, -0.5f, -0.5f,
+		0.5f, -0.5f,  0.5f,
+		0.5f, -0.5f,  0.5f,
+		-0.5f, -0.5f,  0.5f,
+		-0.5f, -0.5f, -0.5f,
 
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-		0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-		0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-		-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-		-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+		-0.5f,  0.5f, -0.5f,
+		0.5f,  0.5f, -0.5f,
+		0.5f,  0.5f,  0.5f,
+		0.5f,  0.5f,  0.5f,
+		-0.5f,  0.5f,  0.5f,
+		-0.5f,  0.5f, -0.5f
 	};
 
 	glm::vec3 cubePositions[] = {
@@ -114,36 +114,32 @@ int main()
 		return -1;
 	}
 
-	Shader ourShader("tri.vert", "tri.frag");
+	Shader cubeShader("cube.vert", "cube.frag");
 
-	Shader shaderTest("yellow.vert", "yellow.frag");
+	Shader lightShader("light.vert", "light.frag");
 
-	unsigned int VBO, VAO;
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
+	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
-	glBindVertexArray(VAO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	unsigned int cubeVBO, cubeVAO;
+	glGenVertexArrays(1, &cubeVAO);
+	glGenBuffers(1, &cubeVBO);
+
+	glBindVertexArray(cubeVAO);
+	glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
 
- 	unsigned int VBO1, VAO1;
- 	glGenVertexArrays(1, &VAO1);
- 	glGenBuffers(1, &VBO1);
- 
- 	glBindVertexArray(VAO1);
- 	glBindBuffer(GL_ARRAY_BUFFER, VBO1);
- 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices1), vertices1, GL_STATIC_DRAW);
- 
- 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
- 	glEnableVertexAttribArray(0);
+	unsigned int lightVAO;
+	glGenVertexArrays(1, &lightVAO);
+	glBindVertexArray(lightVAO);
+	glBindBuffer(GL_ARRAY_BUFFER, cubeVBO);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
 
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
+	/*
 	unsigned int texture1;
 	glGenTextures(1, &texture1);
 	glBindTexture(GL_TEXTURE_2D, texture1);
@@ -187,10 +183,11 @@ int main()
 		std::cout << "Failed to load texture!" << std::endl;
 	}
 	stbi_image_free(data2);
+	*/
 
-	ourShader.use();
-	ourShader.setInt("ourTexture", 0);
-	ourShader.setInt("faceTexture", 1);
+	cubeShader.use();
+	//ourShader.setInt("ourTexture", 0);
+	//ourShader.setInt("faceTexture", 1);
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -201,49 +198,64 @@ int main()
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, texture1);
-		glActiveTexture(GL_TEXTURE1);
-		glBindTexture(GL_TEXTURE_2D, texture2);
-		ourShader.use();
+// 		glActiveTexture(GL_TEXTURE0);
+// 		glBindTexture(GL_TEXTURE_2D, texture1);
+// 		glActiveTexture(GL_TEXTURE1);
+// 		glBindTexture(GL_TEXTURE_2D, texture2);
+		cubeShader.use();
 
 		glm::mat4 matView = glm::mat4(1.0);
 		glm::mat4 matProj = glm::mat4(1.0);
+		glm::mat4 matModel = glm::mat4(1.0);
 
-		GLfloat fRadius = 10.0f;
-		GLfloat fCamX = sin(glfwGetTime()) * fRadius;
-		GLfloat fCamZ = cos(glfwGetTime()) * fRadius;
-		matView = glm::lookAt(glm::vec3(fCamX, 0.0, fCamZ), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
+// 		GLfloat fRadius = 10.0f;
+// 		GLfloat fCamX = sin(glfwGetTime()) * fRadius;
+// 		GLfloat fCamZ = cos(glfwGetTime()) * fRadius;
+		matView = glm::lookAt(glm::vec3(10.0, 0.0, 0.0), glm::vec3(0.0, 0.0, 0.0), glm::vec3(0.0, 1.0, 0.0));
 		matProj = glm::perspectiveFov(glm::radians(45.0f), (float)SCR_WIDTH, (float)SCR_HEIGHT, 0.1f, 100.0f);
+		matModel = glm::translate(matModel, cubePositions[0]);
+		cubeShader.setMat4("matModel", matModel);
+		cubeShader.setMat4("matView", matView);
+		cubeShader.setMat4("matProj", matProj);
+		cubeShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+		cubeShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+		glBindVertexArray(cubeVAO);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
-		for (uint i = 0; i < 10; i++)
-		{
-			glm::mat4 matModel = glm::mat4(1.0);
+// 		for (uint i = 0; i < 10; i++)
+// 		{
+// 			glm::mat4 matModel = glm::mat4(1.0);
+// 
+// 
+// 			matModel = glm::translate(matModel, cubePositions[i]);
+// 			float fAngle = 20.0f * i;
+// 			matModel = glm::rotate(matModel, glm::radians(fAngle), glm::vec3(1.0f, 0.3f, 0.5f));
+// 			cubeShader.setMat4("matModel", matModel);
+// 			cubeShader.setMat4("matView", matView);
+// 			cubeShader.setMat4("matProj", matProj);
+// 
+// 			glBindVertexArray(VAOCube);
+// 			glDrawArrays(GL_TRIANGLES, 0, 36);
+// 		}
 
 
-			matModel = glm::translate(matModel, cubePositions[i]);
-			float fAngle = 20.0f * i;
-			matModel = glm::rotate(matModel, glm::radians(fAngle), glm::vec3(1.0f, 0.3f, 0.5f));
-			ourShader.setMat4("matModel", matModel);
-			ourShader.setMat4("matView", matView);
-			ourShader.setMat4("matProj", matProj);
-
-			glBindVertexArray(VAO);
-			glDrawArrays(GL_TRIANGLES, 0, 36);
-		}
-
-		shaderTest.use();
-		glBindVertexArray(VAO1);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		lightShader.use();
+		glm::mat4 matLightModel = matModel;
+		matLightModel = glm::translate(matLightModel, lightPos);
+		matLightModel = glm::scale(matLightModel, glm::vec3(0.2f));
+		lightShader.setMat4("matModel", matLightModel);
+		lightShader.setMat4("matView", matView);
+		lightShader.setMat4("matProj", matProj);
+		glBindVertexArray(lightVAO);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
 
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
 
-	glDeleteVertexArrays(1, &VAO);
-	glDeleteBuffers(1, &VBO);
-	glDeleteVertexArrays(1, &VAO1);
-	glDeleteBuffers(1, &VBO1);
+	glDeleteVertexArrays(1, &cubeVAO);
+	glDeleteVertexArrays(1, &lightVAO);
+	glDeleteBuffers(1, &cubeVBO);
 
 	glfwTerminate();
 	return 0;
@@ -263,7 +275,7 @@ void processInput(GLFWwindow * window)
 		}
 		else
 		{
-			fFac += 0.01;
+			fFac += 0.01f;
 		}
 	}
 	else if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
@@ -274,7 +286,7 @@ void processInput(GLFWwindow * window)
 		}
 		else
 		{
-			fFac -= 0.01;
+			fFac -= 0.01f;
 		}
 
 	}
