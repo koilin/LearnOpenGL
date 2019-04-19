@@ -133,7 +133,7 @@ int main()
 
 	Shader lightShader("light.vert", "light.frag");
 
-	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+	glm::vec3 lightPos(2.0f, 0.3f, 1.2f);
 
 	unsigned int cubeVBO, cubeVAO;
 	glGenVertexArrays(1, &cubeVAO);
@@ -237,10 +237,12 @@ int main()
 		matView = camera.GetViewMatrix();
 		matProj = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 		matModel = glm::translate(matModel, cubePositions[0]);
+		matModel = glm::rotate(matModel, glm::radians(30.0f), glm::vec3(0.0, 1.0, 0.0));
 		cubeShader.setMat4("matModel", matModel);
 		cubeShader.setMat4("matView", matView);
 		cubeShader.setMat4("matProj", matProj);
 		cubeShader.setVec3("lightPos", lightPos);
+		cubeShader.setVec3("viewPos", camera.Position);
 
 		cubeShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
 		cubeShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
