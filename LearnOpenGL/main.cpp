@@ -249,7 +249,9 @@ int main()
 		cubeShader.setFloat("material.shininess", 32.0f);
 
 		cubeShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-		cubeShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
+		cubeShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+		cubeShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
+		cubeShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
 		glBindVertexArray(cubeVAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);
 
