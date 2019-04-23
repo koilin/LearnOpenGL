@@ -3,7 +3,6 @@
 #include <stb_image.h>
 #include <glm/glm.hpp>
 
-#include <learnopengl/filesystem.h>
 #include <learnopengl/shader_m.h>
 #include <learnopengl/camera.h>
 #include <glm/gtc/matrix_transform.hpp>
@@ -25,7 +24,7 @@ const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
 // camera
-Camera camera(glm::vec3(0.0f, 0.0f, 3.0f));
+Camera camera(glm::vec3(0.0f, 0.0f, 8.0f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
@@ -184,6 +183,7 @@ int main()
 
 
 		cubeShader.use();
+		cubeShader.setVec3("light.direction", glm::vec3(-0.2f, -1.0f, -0.3f));
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, diffuseMap);
 
@@ -192,49 +192,57 @@ int main()
 
 		glm::mat4 matView = glm::mat4(1.0);
 		glm::mat4 matProj = glm::mat4(1.0);
-		glm::mat4 matModel = glm::mat4(1.0);
+		//glm::mat4 matModel = glm::mat4(1.0);
 
 // 		GLfloat fRadius = 10.0f;
 // 		GLfloat fCamX = sin(glfwGetTime()) * fRadius;
 // 		GLfloat fCamZ = cos(glfwGetTime()) * fRadius;
 		matView = camera.GetViewMatrix();
 		matProj = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-		matModel = glm::translate(matModel, cubePositions[0]);
-		matModel = glm::rotate(matModel, glm::radians(30.0f), glm::vec3(0.0, 1.0, 0.0));
-		cubeShader.setMat4("matModel", matModel);
-		cubeShader.setMat4("matView", matView);
-		cubeShader.setMat4("matProj", matProj);
-		cubeShader.setVec3("lightPos", lightPos);
-		cubeShader.setVec3("viewPos", camera.Position);
-		cubeShader.setFloat("material.shininess", 64.0f);
-
-
-		cubeShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-		cubeShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
-		cubeShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
-		cubeShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
-		glBindVertexArray(cubeVAO);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
-
-// 		for (uint i = 0; i < 10; i++)
-// 		{
-// 			glm::mat4 matModel = glm::mat4(1.0);
+		//matModel = glm::translate(matModel, cubePositions[0]);
+		//matModel = glm::rotate(matModel, glm::radians(30.0f), glm::vec3(0.0, 1.0, 0.0));
+// 		cubeShader.setMat4("matModel", matModel);
+// 		cubeShader.setMat4("matView", matView);
+// 		cubeShader.setMat4("matProj", matProj);
+// 		cubeShader.setVec3("lightPos", lightPos);
+// 		cubeShader.setVec3("viewPos", camera.Position);
+// 		cubeShader.setFloat("material.shininess", 64.0f);
 // 
 // 
-// 			matModel = glm::translate(matModel, cubePositions[i]);
-// 			float fAngle = 20.0f * i;
-// 			matModel = glm::rotate(matModel, glm::radians(fAngle), glm::vec3(1.0f, 0.3f, 0.5f));
-// 			cubeShader.setMat4("matModel", matModel);
-// 			cubeShader.setMat4("matView", matView);
-// 			cubeShader.setMat4("matProj", matProj);
-// 
-// 			glBindVertexArray(VAOCube);
-// 			glDrawArrays(GL_TRIANGLES, 0, 36);
-// 		}
+// 		cubeShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+// 		cubeShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+// 		cubeShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
+// 		cubeShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+		//glBindVertexArray(cubeVAO);
+		//glDrawArrays(GL_TRIANGLES, 0, 36);
 
+ 		for (uint i = 0; i < 10; i++)
+ 		{
+ 			glm::mat4 matModel = glm::mat4(1.0);
+ 			matModel = glm::translate(matModel, cubePositions[i]);
+ 			float fAngle = 20.0f * i;
+ 			matModel = glm::rotate(matModel, glm::radians(fAngle), glm::vec3(1.0f, 0.3f, 0.5f));
+			cubeShader.setMat4("matModel", matModel);
+			cubeShader.setMat4("matView", matView);
+			cubeShader.setMat4("matProj", matProj);
+			cubeShader.setVec3("lightPos", lightPos);
+			cubeShader.setVec3("viewPos", camera.Position);
+			cubeShader.setFloat("material.shininess", 64.0f);
+
+
+			cubeShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+			cubeShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
+			cubeShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
+			cubeShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+ 
+ 			glBindVertexArray(cubeVAO);
+ 			glDrawArrays(GL_TRIANGLES, 0, 36);
+ 		}
 
 		lightShader.use();
-		glm::mat4 matLightModel = matModel;
+		glm::mat4 matLightModel = glm::mat4(1.0);;
+		matView = camera.GetViewMatrix();
+		matProj = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
 		matLightModel = glm::translate(matLightModel, lightPos);
 		matLightModel = glm::scale(matLightModel, glm::vec3(0.2f));
 		lightShader.setMat4("matModel", matLightModel);
