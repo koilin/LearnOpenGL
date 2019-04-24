@@ -17,7 +17,6 @@ struct Light{
     vec3 specular;
 };
 
-uniform vec3 lightPos;
 uniform vec3 viewPos;
 uniform Material material;
 uniform Light light;
