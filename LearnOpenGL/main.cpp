@@ -21,6 +21,8 @@ unsigned int loadTexture(const char *path);
 const unsigned int SCR_WIDTH = 800;
 const unsigned int SCR_HEIGHT = 600;
 
+glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+
 // camera
 Camera camera(glm::vec3(0.0f, 0.0f, 4.0f));
 float lastX = SCR_WIDTH / 2.0f;
@@ -196,7 +198,10 @@ int main()
 
 		// be sure to activate shader when setting uniforms/drawing objects
 		cubeShader.use();
-		cubeShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
+		cubeShader.setVec3("light.position", lightPos);
+		cubeShader.setFloat("light.constant", 1.0f);
+		cubeShader.setFloat("light.linear", 0.09f);
+		cubeShader.setFloat("light.quadratic", 0.032f);
 		cubeShader.setVec3("viewPos", camera.Position);
 
 		// light properties
