@@ -201,6 +201,7 @@ int main()
 		cubeShader.setVec3("light.position", camera.Position);
 		cubeShader.setVec3("light.direction", camera.Front);
 		cubeShader.setFloat("light.cutoff", glm::cos(glm::radians(12.5f)));
+		cubeShader.setFloat("light.outoff", glm::cos(glm::radians(17.5f)));
 
 		cubeShader.setVec3("viewPos", camera.Position);
 

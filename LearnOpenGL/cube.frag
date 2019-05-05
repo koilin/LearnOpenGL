@@ -14,6 +14,7 @@ struct Light{
     vec3 position;
     vec3 direction;
     float cutoff;
+    float outoff;
 
     vec3 ambient;
     vec3 diffuse;
@@ -45,6 +46,11 @@ void main()
     if(theta > light.cutoff)
     {
         result = result + diffuse + specular;
+    }
+    else if(theta > light.outoff)
+    {
+        float factor = clamp((theta - light.outoff) / (light.cutoff - light.outoff), 0.0, 1.0);
+        result = result + factor * (diffuse + specular);
     }
     
     FragColor = vec4(result, 1.0);
