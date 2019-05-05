@@ -198,10 +198,10 @@ int main()
 
 		// be sure to activate shader when setting uniforms/drawing objects
 		cubeShader.use();
-		cubeShader.setVec3("light.position", lightPos);
-		cubeShader.setFloat("light.constant", 1.0f);
-		cubeShader.setFloat("light.linear", 0.09f);
-		cubeShader.setFloat("light.quadratic", 0.032f);
+		cubeShader.setVec3("light.position", camera.Position);
+		cubeShader.setVec3("light.direction", camera.Front);
+		cubeShader.setFloat("light.cutoff", glm::cos(glm::radians(12.5f)));
+
 		cubeShader.setVec3("viewPos", camera.Position);
 
 		// light properties
