@@ -85,6 +85,12 @@
   <ItemGroup>
     <ClCompile Include="glad.c" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="XTMesh.cpp" />
+    <ClCompile Include="XTModel.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="XTMesh.h" />
+    <ClInclude Include="XTModel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

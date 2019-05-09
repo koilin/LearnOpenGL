@@ -2,7 +2,7 @@
 #include <string>
 
 
-XTMesh::XTMesh(std::vector<Vertex>& vecVertex, std::vector<unsigned int>& vecIndices, std::vector<Texture>& vecTexture)
+XTMesh::XTMesh(std::vector<XTVertex>& vecVertex, std::vector<unsigned int>& vecIndices, std::vector<XTTexture>& vecTexture)
 {
 	this->m_vVertices = vecVertex;
 	this->m_vIndices = vecIndices;
@@ -53,18 +53,18 @@ void XTMesh::setupMesh()
 
 	glBindVertexArray(VAO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, m_vVertices.size() * sizeof(Vertex), &m_vVertices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, m_vVertices.size() * sizeof(XTVertex), &m_vVertices[0], GL_STATIC_DRAW);
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, m_vIndices.size() * sizeof(unsigned int), &m_vIndices[0], GL_STATIC_DRAW);
 
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(XTVertex), (void*)0);
 	glEnableVertexAttribArray(0);
 
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, normal));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(XTVertex), (void*)offsetof(XTVertex, normal));
 	glEnableVertexAttribArray(1);
 
-	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), (void*)offsetof(Vertex, texCoords));
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(XTVertex), (void*)offsetof(XTVertex, texCoords));
 	glEnableVertexAttribArray(2);
 	
 	glBindVertexArray(0);

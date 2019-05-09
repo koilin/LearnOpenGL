@@ -10,30 +10,31 @@
 #include <learnopengl/shader_m.h>
 
 
-struct Vertex
+struct XTVertex
 {
 	glm::vec3 position;
 	glm::vec3 normal;
 	glm::vec2 texCoords;
 };
 
-struct Texture
+struct XTTexture
 {
 	unsigned int id;
 	std::string type;
+	std::string path;
 };
 
 class XTMesh
 {
 public:
-	XTMesh(std::vector<Vertex>& vecVertex, std::vector<unsigned int>& vecIndices, std::vector<Texture>& vecTexture);
+	XTMesh(std::vector<XTVertex>& vecVertex, std::vector<unsigned int>& vecIndices, std::vector<XTTexture>& vecTexture);
 	~XTMesh();
 	void Draw(Shader shader);
 
 public:
-	std::vector<Vertex> m_vVertices;
+	std::vector<XTVertex> m_vVertices;
 	std::vector<unsigned int> m_vIndices;
-	std::vector<Texture> m_vTextures;
+	std::vector<XTTexture> m_vTextures;
 
 private:
 	unsigned int VAO;
